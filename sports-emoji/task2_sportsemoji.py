@@ -23,7 +23,7 @@ sport_emojis = {
 }
 
 # The emoji used when the keyword is not found in the dictionary
-confusion_emoji = "❓"
+confusion_emoji = "🤔"
 
 # This function check the keywords the user typed
 # It returns an error message, or an empty message if everything is fine
