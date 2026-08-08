@@ -1,0 +1,5 @@
+ID: 2301, Name: Aroha, Campus: Auckland, Mode: Full-time, Email: aroha_ngata@yoobeecolleges.com
+ID: 2302, Name: Liam, Campus: Wellington, Mode: Part-time, Email: liam_smith@yoobeecolleges.com
+ID: 2303, Name: Priya, Campus: Christchurch, Mode: Full-time, Email: priya_sharma@yoobeecolleges.com
+ID: 2304, Name: Noah, Campus: Auckland, Mode: Full-time, Email: noah_wilson@yoobeecolleges.com
+ID: 2305, Name: Mia, Campus: Wellington, Mode: Part-time, Email: mia_chen@yoobeecolleges.com
