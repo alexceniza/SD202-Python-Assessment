@@ -1,28 +1,16 @@
 # Task 1: Detective 
-# This program works out which murder scenario is most likely
-# The score for each scenario = value of the room + value of the tool
-# The scenarios are then sorted from highest score to lowest score
+# Works out which murder scenario is most likely
+# Score for each scenario = room value + tool value, then sorted in descending order
 
 
-# Dictionary that hols the value of each room 
-room_values = {
-    "Ball": 0.5, 
-    "Dining": 0.9,
-    "Kitchen": 0.1, 
-    "Master bedroom": 0.3, 
-    "Bathroom": 0.3
-}
+# Value of each room
+rooms = {"Ball": 0.5, "Dining": 0.9, "Kitchen": 0.1, "Master bedroom": 0.3, "Bathroom": 0.3}
 
-# Dictionary that hold the value of each tool 
-tool_values = {
-    "Dagger": 0.4, 
-    "Revolver": 0.7, 
-    "Lead pipe": 0.1,
-    "Hammer": 0.8
-}
+# Value of each tool 
+tools = {"Dagger":0.4, "Revolver": 0.7, "Lead pipe": 0.1, "Hammer": 0.8}
 
-# List of dictionaries, one dictionary for each scenario
-# I only store the names here, not numbers, so the values are not hard coded
+# One dictionary for each scenario
+# I only store names here, not numbers, so the values are not hard coded
 # The numbers are looked up from the dictionaries above
 
 scenarios = [
@@ -35,32 +23,17 @@ scenarios = [
 ]
 
 
-# This function adds the room value and the tool value together
-def get_total(scenario): 
-    room_name = scenario["room"]
-    tool_name = scenario["tool"]
-
-    room_score = room_values[room_name]
-    tool_score = tool_values[tool_name]
-
-    total = room_score + tool_score
-
-    # round() is used because Python sometimes shows numbers like 0.4000000000000001 when adding decimals
-    return round(total, 2)
-
-
-# This function is used by sorted() to know which value to sore on 
+# This function is used by sorted() to know which value to sort on 
 def get_score(scenario): 
-    return scenario["total"]
+    return scenario["value"]
 
 
-# Work out the total for every scenario and save it inside the dictionary 
+# Work out the total for every scenario and store it in its dictionary
 for scenario in scenarios: 
-    scenario["total"] = get_total(scenario)
+    scenario["value"] = round(rooms[scenario["room"]] + tools[scenario["tool"]], 2)
 
 
-# Sort the list from the biggest total to the smallest total 
-# reverse=True means descending order 
+# Sort from biggest total to smallest. reverse=True gives descending order
 sorted_scenarios = sorted(scenarios, key=get_score, reverse=True)
 
 
@@ -68,14 +41,15 @@ sorted_scenarios = sorted(scenarios, key=get_score, reverse=True)
 print("Prioritized scenarios (most likely first):")
 print()
 
+
 rank = 1 
 for scenario in sorted_scenarios: 
     suspect = scenario["suspect"]
     room = scenario["room"]
     tool = scenario["tool"]
-    total = scenario["total"]
+    value = scenario["value"]
 
-    print(f"{rank}. {suspect}, {room}, {tool} = {total}")
+    print(f"{rank}. {suspect}, {room}, {tool} = {value}")
     rank = rank + 1 
 
 print()
