@@ -31,9 +31,9 @@ campuses = lines[15:20]
 study_modes = lines[20:25]
 
 
-# Make an email for each student 
 # The format is firstname_lastname@yoobeecolleges.com in lower case
-emails = [f"{first.lower()}_{last.lower()}@yoobeecolleges.com" for first, last in zip(first_names, last_names)]
+# replace() removes any spaces, because one of the first names is two words
+emails = [f"{first.lower().replace(' ', '')}_{last.lower()}@yoobeecolleges.com" for first, last in zip(first_names, last_names)]
 
 
 # Put all the information for each student on one line 
