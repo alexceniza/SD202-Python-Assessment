@@ -14,7 +14,7 @@ def calculate_mean(anysequence):
 def distance_fn(s1, s2): 
     squared_diff_sum = 0
     for i in range(len(s1)):
-        squared_diff_sum += (s1[i] - s2[i]) **2
+        squared_diff_sum += (s1[i] - s2[i]) ** 2
     return squared_diff_sum
 
 # Example
