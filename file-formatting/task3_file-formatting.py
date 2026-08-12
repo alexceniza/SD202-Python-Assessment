@@ -9,7 +9,7 @@
 # and writes a tidy version into student_record_v2.txt
 
 
-# Open the original file and reads every line into a list
+# Open the original file and read every line into a list
 file = open("student_record_v1.txt", "r")
 all_lines = file.readlines()
 file.close()
@@ -32,28 +32,21 @@ study_modes = lines[20:25]
 
 
 # Make an email for each student 
-# The format is firstname_lastname@yobbecolleges.com in lower case
-emails = []
-for i in range (5):
-    first  = first_names[i].lower()
-    last = last_names[i].lower()
-    email = first + "_" + last + "@yoobeecolleges.com"
-    emails.append(email)
+# The format is firstname_lastname@yoobeecolleges.com in lower case
+emails = [f"{first.lower()}_{last.lower()}@yoobeecolleges.com" for first, last in zip(first_names, last_names)]
 
 
 # Put all the information for each student on one line 
 formatted_data = []
 for i in range(5):
-    student_info = f"ID: {student_ids[i]}, Name: {first_names[i]}, Campus: {campuses[i]}, Mode: {study_modes[i]}, Email: {emails[i]}"
+    student_info = f"ID: {student_ids[i]}, Name: {first_names[i]} {last_names[i]}, Campus: {campuses[i]}, Mode: {study_modes[i]}, Email: {emails[i]}"
     formatted_data.append(student_info)
-
 
 # Write the new lines into the second file 
 # "w" means write, and it creates the file if it does not exist yet
-new_file = open("student_record_v2.txt", "w")
-for student_info in formatted_data: 
-    new_file.write(student_info + "\n")
-new_file.close() 
+with open("student_record_v2.txt", "w") as file:
+    for line in formatted_data:
+        file.write(line + "\n")
 
 
 # Show the result on the screen so I can check it worked
